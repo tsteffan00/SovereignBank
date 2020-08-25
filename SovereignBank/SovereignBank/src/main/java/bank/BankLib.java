@@ -1,5 +1,11 @@
 package bank;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -23,6 +29,7 @@ public class BankLib {
 		return generatedPIN;
 		}
 	
+<<<<<<< HEAD
 	public static int routingNum() {
 		ArrayList<Integer> routNum = new ArrayList<Integer>(); //logs all rouning numbers
 		Random ran = new Random();
@@ -43,5 +50,36 @@ public class BankLib {
 	public static int accNum() {
 		//you could use the same generator as routing number or make a new one
 
+=======
+	public void saveCustomerToFile(ArrayList<Customer> customerList) {
+		try {
+			FileOutputStream fileOut = new FileOutputStream("userlogin.txt");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(customerList);
+			out.close();
+		} catch (FileNotFoundException fnfe) {
+			System.out.println("FileNotFoundException: " + fnfe);
+		} catch (IOException ioe) {
+			System.out.println("IOException: " + ioe);
+			ioe.printStackTrace();
+		}
+>>>>>>> 32f84746401266a3955d2cccb77fc3a6513ec0e8
 	}
+	
+	public void readCustomersFromFile() {
+		try
+        {    
+            FileInputStream file = new FileInputStream("userlogin.txt"); 
+            ObjectInputStream in = new ObjectInputStream(file); 
+              
+            userLoginHolder = (ArrayList<String>)in.readObject(); 
+              
+            in.close(); 
+            file.close(); 
+        } catch (IOException ioe) {
+			System.out.println("IOException: " + ioe);
+        }
+	}
+	
+	
 }
