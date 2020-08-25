@@ -25,28 +25,16 @@ public class Prompts {
 		
 			switch (numInput) {
 			case 1: // Login Option
+				
 				System.out.println("Please input your username:");
 				userLoginHolder.add(userReader.next());
 				System.out.println("Please input your password:");
 				userLoginHolder.add(userReader.next());
 
-				/*if(userLoginHolder.get(0) && userLoginHolder.get(1) == ) {
+
 					
-					try
-			        {    
-			            FileInputStream file = new FileInputStream("userlogin.txt"); 
-			            ObjectInputStream in = new ObjectInputStream(file); 
-			              
-			            userLoginHolder = (ArrayList<String>)in.readObject(); 
-			              
-			            in.close(); 
-			            file.close(); 
-			        } catch (IOException ioe) {
-						System.out.println("IOException: " + ioe);
-			        }
-				} else {
+
 					System.out.println("Invalid username or password. Please try again.");
-				}*/
 				
 				//Connect array with pre-existing account read from userlogin.txt.
 				errorCounter++;
@@ -93,18 +81,6 @@ public class Prompts {
 				System.out.println("\nUsername: " + userLoginHolder.get(2) + 
 						"\n" + "Password: " + userLoginHolder.get(3) + 
 						"\n" + "PIN: " + userLoginHolder.get(4)); //Test output to console.
-				
-				try {
-					FileOutputStream fileOut = new FileOutputStream("userlogin.txt", true);
-					ObjectOutputStream out = new ObjectOutputStream(fileOut);
-					out.writeObject(customerList);
-					out.close();
-				} catch (FileNotFoundException fnfe) {
-					System.out.println("FileNotFoundException: " + fnfe);
-				} catch (IOException ioe) {
-					System.out.println("IOException: " + ioe);
-					ioe.printStackTrace();
-				}
 				
 				errorCounter++;
 				break;
