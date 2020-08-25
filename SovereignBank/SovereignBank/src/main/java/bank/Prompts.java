@@ -62,6 +62,12 @@ public class Prompts {
 				System.out.println("Please input your desired username:");
 				String userName = userReader.next();
 
+		//Add more personal information 
+				//Phone Number: probably use the long datatype if we are not incorporating the -
+				//Email: String 
+				//Address:String
+				//Security Question and Answer
+				
 
 				//This block ensures username is unique.
 				int userNameErrChk = 0;
@@ -108,6 +114,8 @@ public class Prompts {
 				
 				errorCounter++;
 				break;
+				
+	//Add more switch statements for the Employee Login and the Admin Login
 			case 3: //Exit
 				System.out.println("Goodbye. Bank with us again soon.");
 				System.exit(0);

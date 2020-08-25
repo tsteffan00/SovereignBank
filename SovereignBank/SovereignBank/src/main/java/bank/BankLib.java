@@ -23,8 +23,25 @@ public class BankLib {
 		return generatedPIN;
 		}
 	
-	public static String usernameChecker(String userName) {
+	public static int routingNum() {
+		ArrayList<Integer> routNum = new ArrayList<Integer>(); //logs all rouning numbers
+		Random ran = new Random();
+		int minimum = 10000;
+		int ranRange = 99999 - minimum + 1;
+		int routCount= 0;
+		int routingNumber = 0;
+			while (routCount == 0) { //This loop ensures unique routing number
+			routingNumber = ran.nextInt(ranRange) + minimum; 		
+					if (routNum.contains(routingNumber) == false) {
+						routCount++;
 
+					}
+				}
+			return routingNumber;
+			}
+	
+	public static int accNum() {
+		//you could use the same generator as routing number or make a new one
 
 	}
 }
