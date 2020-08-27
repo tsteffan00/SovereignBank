@@ -41,26 +41,46 @@ public class Admin {
 	public static void deleteAccount() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("What is the account number of the Customer you want to delete?");
+		int pin = scan.nextInt();
+		while(pin!=BankAccounts.getPIN()) {
 		int deletion = scan.nextInt();
 		BankLib.readCustomersFromFile().remove(deletion);
           		
 	}
-	
+	}
 	public static int editAccountDeposit() {
 
 		Scanner scan = new Scanner(System.in);
+		System.out.println("Who's account would you like to alter?");
+		int pin = scan.nextInt();
+		while(pin!=BankAccounts.getPIN()) {
 		System.out.println("How much would you like to credit the account?");
 		int credit = scan.nextInt();
-		return credit;
+		int currentBalance= BankAccounts.getBalance();
+		int updatedBalance = currentBalance+credit;
+		System.out.println(currentBalance);
+		return updatedBalance;
+		
 	}
-	
+		return pin;
+	}
 	public static int editAccountWithdraw() {
 		Scanner scan = new Scanner(System.in);
+		System.out.println("Who's account would you like to alter?");
+		int pin = scan.nextInt();
+		while(pin!=BankAccounts.getPIN()) {
 		System.out.println("How much would you like to withdraw from the account?");
 		int takeAway = scan.nextInt();
-		return takeAway;
+		int currentBalance= BankAccounts.getBalance();
+		int updatedBalance = currentBalance-takeAway;
+		System.out.println(updatedBalance);
+		return updatedBalance ;
+	}
+		
+		return pin ;
 	}
 	
+		
 	public static boolean approveAccounts() {
 		boolean approve = true;
 		if(approve = true) {

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Prompts {
+	private static final String password = null;
+	private static String userName;
+
 	public static void initialPrompt() {
 		System.out.println("Welcome to Sovereign Bank.\n"
 				+ "If logging in, press 1. If registering a new account, "
@@ -19,6 +22,7 @@ public class Prompts {
 		
 			switch (numInput) {
 			case 1: // Login Option
+				Customer custome= new Customer(userName,password);
 				BankLib.readCustomersFromFile();
 				System.out.println("Please input your username:");
 				userLoginHolder.add(userReader.next());
@@ -29,6 +33,8 @@ public class Prompts {
 
 				
 				errorCounter++;
+				accountMenuPrompt(custome);
+
 				break;
 			case 2: // Registration Option
 				ArrayList<Customer> masterCustList = new ArrayList<Customer>();
@@ -55,17 +61,18 @@ public class Prompts {
 
 				
 				//Creates the object of the Customer account, and adds it into an ArrayList<Customer>
-				Customer customer = new Customer(userName, password, firstName, lastName);
+				Customer customer = new Customer(userName, password, firstName, lastName, 0);
 				masterCustList.add(customer);
 				
 				BankLib.saveCustomerToFile(masterCustList);
 				
 				//Prints out a message in console so the customer can see.
-				System.out.println("\nUsername: " + userLoginHolder.get(2) + 
-						"\n" + "Password: " + userLoginHolder.get(3) + 
-						"\n" + "PIN: " + userLoginHolder.get(4)); //Test output to console.
+				System.out.println("\nUsername: " + userLoginHolder.get(0) + 
+						"\n" + "Password: " + userLoginHolder.get(1) + 
+						"\n" + "PIN: " + userLoginHolder.get(3)); //Test output to console.
 				
 				errorCounter++;
+				accountMenuPrompt(customer);
 				break;
 			case 3: 
 				
@@ -74,7 +81,8 @@ public class Prompts {
 				adminHolder.add(userReader.next());
 				System.out.println("Enter password: ");
 				adminHolder.add(userReader.next());
-				BankLib.adlogin(adminHolder.get(0),adminHolder.get(1));
+				BankLib.adlogin(adminHolder.get(0),adminHolder.get(0));
+				adminMenuPrompt();
 				break;
 				
 			case 4: //Exit
@@ -135,6 +143,7 @@ public class Prompts {
 				System.out.println("How much would you like to deposit?");
 				numInput=actionReader.nextInt();
 				if(BankAccounts.getBalance() <= numInput) {
+					
 					int updatedBalance=BankAccounts.getBalance()+numInput;
 					return updatedBalance;	
 				}
@@ -178,8 +187,8 @@ public class Prompts {
 	public static void adminMenuPrompt() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("What services would you like to perform today?"+"\n"
-							+"1)Delete an account" + "2)Edit a Deposit"+"\n"
-							+"3)Edit a withdraw" + "4)Approve/Deny an Account");
+							+"1)Delete an account " + " 2)Edit a Deposit"+"\n"
+							+"3)Edit a withdraw " + " 4)Approve/Deny an Account");
 		int input = scan.nextInt();
 		
 		switch(input) {

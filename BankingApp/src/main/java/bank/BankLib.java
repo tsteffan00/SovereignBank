@@ -48,6 +48,7 @@ public class BankLib {
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(masterCustList);
 			out.close();
+			fileOut.close();//*
 		} catch (FileNotFoundException fnfe) {
 			System.out.println("FileNotFoundException: " + fnfe);
 		} catch (IOException ioe) {
@@ -81,7 +82,7 @@ public class BankLib {
         	return masterCustList;
         }catch(EOFException e) {
         	
-			Customer customer = new Customer(userName, password, firstName, lastName);
+			Customer customer = new Customer(userName, password, firstName, lastName, 0);
         	masterCustList.add(customer);
         	saveCustomerToFile(masterCustList);
         	Prompts.initialPrompt();

@@ -1,0 +1,5 @@
+balance=200.00 accountNumber=36664522 PIN=2002 
+balance=500.00 accountNumber=62252512 PIN=2036 
+balance=600.00 accountNumber=65254622 PIN=4595
+balance=700.00 accountNumber=64256256 PIN=1988
+balance=800.00 accountNumber=36613431 PIN=8945

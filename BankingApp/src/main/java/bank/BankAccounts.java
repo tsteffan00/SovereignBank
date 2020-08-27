@@ -3,6 +3,8 @@ package bank;
 import java.io.Serializable;
 
 public class BankAccounts implements Serializable {
+	
+
 	public static final long serialVersionUID = 7654321L;
 	
 	static int balance;
@@ -13,9 +15,9 @@ public class BankAccounts implements Serializable {
 	
 	public BankAccounts(int balance, int accountNumber, int PIN, 
 			String Accessor, String jointAccessor) {
-		BankAccounts.balance = balance;
+		this.balance = balance;
 		this.accountNumber = accountNumber;
-		BankAccounts.PIN = PIN;
+		this.PIN = PIN;
 		this.Accessor = Accessor;
 		this.jointAccessor = jointAccessor;
 	}
@@ -25,7 +27,7 @@ public class BankAccounts implements Serializable {
 	}
 
 	public void setBalance(int balance) {
-		BankAccounts.balance = balance;
+		this.balance = balance;
 	}
 
 	public int getAccountNumber() {
@@ -58,6 +60,12 @@ public class BankAccounts implements Serializable {
 
 	public void setJointAccessor(String jointAccessor) {
 		this.jointAccessor = jointAccessor;
+	}
+
+	@Override
+	public String toString() {
+		return "Balance=" + balance + ", AccountNumber=" + accountNumber + ", PIN=" + PIN + ", Accessor="
+				+ Accessor + ", jointAccessor=" + jointAccessor + "]";
 	}
 	
 	/*TODO: BankAccounts need to have balance, account number and a PIN.
